@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "Logger.h"
+#define INTEGER int 
 
-int main()
+INTEGER main()
 {
     Log("Hello World!");
     std::cin.get();
 }
+//#include "EndBrace.h"
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
