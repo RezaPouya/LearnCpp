@@ -133,12 +133,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="export.ixx" />
+    <ClCompile Include="Ex_01.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EndBrace.h" />
+    <ClInclude Include="Ex_01.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Math.h" />
   </ItemGroup>
