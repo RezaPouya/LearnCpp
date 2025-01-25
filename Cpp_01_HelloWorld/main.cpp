@@ -21,7 +21,7 @@
 
 
 // Ex1_01.cpp - A complete C++ program
-import std; // This line makes the entire Standard Library available,
+//import std; // This line makes the entire Standard Library available,
 #include <iostream>
 #include <print>
 // including the std::println() functionality used below
