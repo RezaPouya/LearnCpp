@@ -28,6 +28,8 @@ INTEGER main()
     
     Ex_01();
 
+    Ex_02_Variables();
+
     //std::cin.get();
     
     
