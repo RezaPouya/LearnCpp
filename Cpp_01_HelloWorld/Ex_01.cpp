@@ -47,6 +47,11 @@ void Ex_02_Variables() {
 	// Convert a distance in yards, feet, and inches to inches
 	std::print("Enter a distance as yards, feet, and inches ");
 	std::println("with the three values separated by spaces: ");
+
+
+	std::println("Enter a distance as yards, feet, and inches "
+		"with the three values separated by spaces: ");
+
 	std::cin >> yards >> feet >> inches;
 	const unsigned feet_per_yard{ 3 };
 	const unsigned inches_per_foot{ 12 };
