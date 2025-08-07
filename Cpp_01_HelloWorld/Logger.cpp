@@ -1,5 +1,5 @@
 #include <iostream> // this just copy and past content of this iostream file to this file
-#include "Logger.h";
+#include "Logger.h"
 #include <string> 
 
 void Log(const char* message) {
