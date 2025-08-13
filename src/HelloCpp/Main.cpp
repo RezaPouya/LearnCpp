@@ -10,6 +10,7 @@ int main()
     Log("This is my first cpp after so many years");
     Log("================================================================");
     std::cin.get();
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
