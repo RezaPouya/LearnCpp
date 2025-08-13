@@ -9,6 +9,18 @@ int main()
     std::cout << "Hello World!\n";
     Log("This is my first cpp after so many years");
     Log("================================================================");
+    unsigned int i = 0;
+    bool condition = true;
+    for (; condition;)
+    {
+        if (i % 2 == 0)
+            LogForLoop(i);
+
+        i++;
+        if (i > 100) {
+            condition = 0;
+        }
+    }
     std::cin.get();
     return 0;
 }
