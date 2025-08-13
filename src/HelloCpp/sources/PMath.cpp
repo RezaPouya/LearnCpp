@@ -2,22 +2,22 @@
 #include "E:/Projects/LearnCpp/src/HelloCpp/headers/PMath.h"
 
 
-bool CanBeDividedTo2(const unsigned long number)
+inline bool CanBeDividedTo2(const unsigned long number)
 {
 	return (number % 2 == 0);
 }
 
-bool CanBeDividedTo3(const unsigned long number)
+inline bool CanBeDividedTo3(const unsigned long number)
 {
 	return (number % 3 == 0);
 }
 
-bool CanBeDividedTo5(const unsigned long number)
+inline bool CanBeDividedTo5(const unsigned long number)
 {
 	return (number % 5 == 0);
 }
 
-bool CanBeDividedTo7(const unsigned long number)
+inline bool CanBeDividedTo7(const unsigned long number)
 {
 	return (number % 7 == 0);
 }
@@ -38,6 +38,11 @@ bool IsPrime(const unsigned long long n)
 		if (n % i == 0) 
 			return false; // If divisible, not prime
 	}
+
+	//for (int i = 5; i * i <= n; i += 6) {
+	//	if (n % i == 0 || n % (i + 2) == 0)
+	//		return false;
+	//}
 
 	return true; // Otherwise, it's prime
 }
