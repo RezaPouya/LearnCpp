@@ -1,28 +1,43 @@
 // HelloCpp.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+using namespace std;
 #include <iostream>
-#include "D:/MyGithub/LearnCpp/src/HelloCpp/headers/Logger.h"
+//#include "D:/MyGithub/LearnCpp/src/HelloCpp/headers/Logger.h"
+#include "E:/Projects/LearnCpp/src/HelloCpp/headers/Logger.h"
+#include "E:/Projects/LearnCpp/src/HelloCpp/headers/PMath.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    Log("This is my first cpp after so many years");
-    Log("================================================================");
-    unsigned int i = 0;
-    bool condition = true;
-    for (; condition;)
-    {
-        if (i % 2 == 0)
-            LogForLoop(i);
+	std::cout << "Hello World!\n";
+	Log("This is my first cpp after so many years");
+	Log("================================================================");
+	Log("List of Prime numbers: ");
+	unsigned int i = 0;
 
-        i++;
-        if (i > 100) {
-            condition = 0;
-        }
-    }
-    std::cin.get();
-    return 0;
+	bool condition = true;
+
+	for (; condition;)
+	{
+		//if (IsPrime(i)) {
+		//    if (!IsPrimeOrg(i)) {
+		//        LogForLoop(i);
+		//        Log("  is not ");
+		//    }
+		//        
+		//}
+
+		if (IsPrime(i))
+		{
+			LogForLoop(i);
+		}
+
+		i++;
+		if (i > 1000000) {
+			condition = 0;
+		}
+	}
+	cin.get(); //std::cin.get();
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
