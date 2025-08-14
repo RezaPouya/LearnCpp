@@ -2,28 +2,28 @@
 #include "E:/Projects/LearnCpp/src/HelloCpp/headers/PMath.h"
 
 
-inline bool CanBeDividedTo2(const unsigned long number)
+inline bool CanBeDividedTo2(const bigint number)
 {
 	return (number % 2 == 0);
 }
 
-inline bool CanBeDividedTo3(const unsigned long number)
+inline bool CanBeDividedTo3(const bigint number)
 {
 	return (number % 3 == 0);
 }
 
-inline bool CanBeDividedTo5(const unsigned long number)
+inline bool CanBeDividedTo5(const bigint number)
 {
 	return (number % 5 == 0);
 }
 
-inline bool CanBeDividedTo7(const unsigned long number)
+inline bool CanBeDividedTo7(const bigint number)
 {
 	return (number % 7 == 0);
 }
 
 
-bool IsPrime(const unsigned long long n)
+bool IsPrime(const bigint n)
 {
 	if (n <= 1)
 		return false; // Numbers less than or equal to 1 are not prime

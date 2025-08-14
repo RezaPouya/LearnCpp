@@ -11,8 +11,8 @@ int main()
 	std::cout << "Hello World!\n";
 	Log("This is my first cpp after so many years");
 	Log("================================================================");
-	Log("List of Prime numbers: ");
-	unsigned int i = 0;
+	Log("List of Prime numbers: ( 0 , 10000 ) ");
+	unsigned int i = 2;
 
 	bool condition = true;
 
@@ -32,7 +32,7 @@ int main()
 		}
 
 		i++;
-		if (i > 1000000) {
+		if (i > 10000) {
 			condition = 0;
 		}
 	}

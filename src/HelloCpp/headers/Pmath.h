@@ -1,3 +1,5 @@
 #pragma once
 
-bool IsPrime(const unsigned long long number);
+#define bigint unsigned long long
+
+bool IsPrime(const bigint number);
