@@ -9,6 +9,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RawPointers", "src\RawPoint
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "References", "src\References\References.vcxproj", "{3900BACA-2259-424C-91F6-80D99D238C84}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		OrderOfStudies.txt = OrderOfStudies.txt
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Classes", "src\Classes\Classes.vcxproj", "{B10A4596-7174-4659-9BB6-E4109502C925}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +48,14 @@ Global
 		{3900BACA-2259-424C-91F6-80D99D238C84}.Release|x64.Build.0 = Release|x64
 		{3900BACA-2259-424C-91F6-80D99D238C84}.Release|x86.ActiveCfg = Release|Win32
 		{3900BACA-2259-424C-91F6-80D99D238C84}.Release|x86.Build.0 = Release|Win32
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Debug|x64.ActiveCfg = Debug|x64
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Debug|x64.Build.0 = Debug|x64
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Debug|x86.ActiveCfg = Debug|Win32
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Debug|x86.Build.0 = Debug|Win32
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Release|x64.ActiveCfg = Release|x64
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Release|x64.Build.0 = Release|x64
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Release|x86.ActiveCfg = Release|Win32
+		{B10A4596-7174-4659-9BB6-E4109502C925}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
