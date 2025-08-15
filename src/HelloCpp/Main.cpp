@@ -2,23 +2,20 @@
 using namespace Logger;
 int main()
 {
-	std::cout << "Hello World!\n";
-	Log("This is my first cpp after so many years","\n");
-	Log("================================================================","\n");
-	Log("List of Prime numbers: ( 0 , 100000 ) ","\n\n");
+	//std::cout << "Hello World!\n";
+	LogLine("This is my first cpp after so many years");
+	LogLine("================================================================");
+	Log("The prime numbers between 0 and 100:" , "\t", 2);
 
-
-	unsigned int i = 1;  // Declare outside the loop for debugging
-	Log(2 );
-	for (; i < 100000; i = i + 2)
+	for (int i = 1; i < 100; i = i + 2)
 	{
-		if (IsPrime(i))
-			Log(", ", i);
+		if (!IsPrime(i))
+			continue;
 
+		Log(", ", i);
 	}
 
-	Log("\n");
+	LogLine();
 	cin.get();
 	return 0;
 }
- 

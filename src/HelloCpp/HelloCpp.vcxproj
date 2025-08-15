@@ -133,7 +133,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="sources\Logger.cpp" />
     <ClCompile Include="sources\Pmath.cpp" />
   </ItemGroup>
   <ItemGroup>
