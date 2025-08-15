@@ -1,13 +1,32 @@
 #include <iostream>
 #include "entities/headers/Player.h"
 #include "entities/headers/Position.h"
+#include "entities/headers/Logger.h"
 
 #define Log(x) std::cout << x << std::endl ; 
 
 
 int main()
 {
+
+    std::cout << "Only difference between class and struct." << std::endl <<
+        " struct member by default are public, while class members are private !" 
+        << std::endl << std::endl << 
+        " The only reason struct exists in cpp is because cpp wants to have backward compeability with c , c has struct" 
+        << std::endl << std::endl <<
+        " use struct for set of variable like vector2 and vector3, which doens't have massive functionality in it" 
+        << std::endl << std::endl <<
+        " use struct for set of variable like vector2 and vector3, which doens't have massive functionality in it"
+        << std::endl << std::endl
+        ;
+
     Player player;
+
+    PouyaLogger::Logger logger;
+
+    logger.SetLogLevel(PouyaLogger::Information);
+    
+    logger.Info("Player is created");
 
     // Correct logging:
     // If using a {}-style formatter:
@@ -19,6 +38,7 @@ int main()
 
     player.Move(1, 1, 1, 1);
 
+    logger.Info("Player moved by (1,1,1,1)");
     std::cout << "Player current position: " << std::endl <<
         "\t x:" << player.GetPosition().GetX() <<
         "\t y:" << player.GetPosition().GetY() <<
@@ -30,7 +50,7 @@ int main()
     std::cout << "Move Player in direction of  (3,3,4) with speed of 2. ";
     
     player.Move(3, 3, 4, 2);
-    
+    logger.Info("Player moved by (3,3,4,2)");
     std::cout << "Player current position: " << std::endl <<
         "\t x:" << player.GetPosition().GetX() <<
         "\t y:" << player.GetPosition().GetY() <<
@@ -42,4 +62,11 @@ int main()
     return 0;
 }
 
-
+// its 
+struct Vector2 {
+    float X, Y;
+    void Add(const Vector2& other) {
+        this->X += other.X;
+        this->Y += other.Y;
+    }
+};

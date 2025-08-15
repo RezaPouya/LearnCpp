@@ -143,13 +143,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Classes.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="entities\classes\Logger.cpp" />
     <ClCompile Include="entities\classes\Player.cpp" />
     <ClCompile Include="entities\classes\Position.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="entities\headers\Logger.h" />
     <ClInclude Include="entities\headers\Player.h" />
     <ClInclude Include="entities\headers\Position.h" />
+    <ClInclude Include="entities\headers\PouyaTime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
