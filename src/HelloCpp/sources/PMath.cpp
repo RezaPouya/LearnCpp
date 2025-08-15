@@ -1,6 +1,7 @@
 //#include "D:/MyGithub/LearnCpp/src/HelloCpp/headers/PMath.h"
-#include "E:/Projects/LearnCpp/src/HelloCpp/headers/PMath.h"
 
+//#include "D:/MyGithub/LearnCpp/src/HelloCpp/headers/PMath.h"
+#include "../headers/Pmath.h"
 
 inline bool CanBeDividedTo2(const bigint number)
 {

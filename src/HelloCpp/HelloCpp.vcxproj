@@ -77,6 +77,9 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessToFile>false</PreprocessToFile>
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+      <Optimization>MaxSpeed</Optimization>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,6 +138,8 @@
   <ItemGroup>
     <ClInclude Include="headers\Logger.h" />
     <ClInclude Include="headers\Pmath.h" />
+    <ClInclude Include="headers\TypeDefinition.h" />
+    <ClInclude Include="headers\Usings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

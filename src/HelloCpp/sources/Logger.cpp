@@ -1,15 +1,16 @@
-#include <iostream>
+#include "../headers/Usings.h"
 
-//#include "D:/MyGithub/LearnCpp/src/HelloCpp/headers/Logger.h"
-#include "E:/Projects/LearnCpp/src/HelloCpp/headers/Logger.h"
-
-void Log(const char* message) 
+void Log(const char* message, const char* endline)
 {
-	std::cout << message << std::endl;
+	std::cout << message << endline;
+}
+
+void Log(bigint message, const char* endline)
+{
+	std::cout << message << endline;
 }
 
 
-void LogForLoop(const int message)
-{
-	std::cout << message << ", ";
+void Log(const char* std, bigint message, const char* endline) {
+	std::cout << std << message << endline;
 }

@@ -1,21 +1,20 @@
 // HelloCpp.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 using namespace std;
-#include <iostream>
+
 //#include "D:/MyGithub/LearnCpp/src/HelloCpp/headers/Logger.h"
-#include "E:/Projects/LearnCpp/src/HelloCpp/headers/Logger.h"
-#include "E:/Projects/LearnCpp/src/HelloCpp/headers/PMath.h"
+#include "headers/Usings.h"
 
 int main()
 {
 	std::cout << "Hello World!\n";
-	Log("This is my first cpp after so many years");
-	Log("================================================================");
-	Log("List of Prime numbers: ( 0 , 10000 ) ");
+	Log("This is my first cpp after so many years", "\n");
+	Log("================================================================", "\n");
+	Log("List of Prime numbers: ( 0 , 10000 ) ", "\n");
 	unsigned int i = 2;
 
 	bool condition = true;
-
+	bool firstOne = true;
 	for (; condition;)
 	{
 		//if (IsPrime(i)) {
@@ -28,7 +27,13 @@ int main()
 
 		if (IsPrime(i))
 		{
-			LogForLoop(i);
+			if (firstOne) {
+				Log(i ,"");
+				firstOne = false;
+			}
+			else {
+				Log(", " , i ,"");
+			}
 		}
 
 		i++;

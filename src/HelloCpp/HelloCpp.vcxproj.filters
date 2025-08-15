@@ -8,5 +8,7 @@
   <ItemGroup>
     <ClInclude Include="headers\Logger.h" />
     <ClInclude Include="headers\Pmath.h" />
+    <ClInclude Include="headers\TypeDefinition.h" />
+    <ClInclude Include="headers\Usings.h" />
   </ItemGroup>
 </Project>

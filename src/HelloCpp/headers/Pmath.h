@@ -1,5 +1,4 @@
 #pragma once
-
-#define bigint unsigned long long
+#include "TypeDefinition.h"  // Fixed typo in filename
 
 bool IsPrime(const bigint number);
