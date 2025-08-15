@@ -1,5 +1,5 @@
 #include "headers/Usings.h"
-using namespace Logger;
+
 int main()
 {
 	//std::cout << "Hello World!\n";
