@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloCpp", "src\HelloCpp\He
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RawPointers", "src\RawPointers\RawPointers.vcxproj", "{EB17E26C-A9CB-467B-B48D-2A6A4D6163E1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "References", "src\References\References.vcxproj", "{3900BACA-2259-424C-91F6-80D99D238C84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{EB17E26C-A9CB-467B-B48D-2A6A4D6163E1}.Release|x64.Build.0 = Release|x64
 		{EB17E26C-A9CB-467B-B48D-2A6A4D6163E1}.Release|x86.ActiveCfg = Release|Win32
 		{EB17E26C-A9CB-467B-B48D-2A6A4D6163E1}.Release|x86.Build.0 = Release|Win32
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Debug|x64.ActiveCfg = Debug|x64
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Debug|x64.Build.0 = Debug|x64
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Debug|x86.ActiveCfg = Debug|Win32
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Debug|x86.Build.0 = Debug|Win32
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Release|x64.ActiveCfg = Release|x64
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Release|x64.Build.0 = Release|x64
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Release|x86.ActiveCfg = Release|Win32
+		{3900BACA-2259-424C-91F6-80D99D238C84}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

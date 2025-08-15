@@ -3,7 +3,7 @@
 
 int main()
 {
-    Log( "Hello Raw Pointers!");
+    Log( "Raw Pointers!");
     Log("");
     Log( "Pointers are just integer which store address of memory!");
     Log("");
