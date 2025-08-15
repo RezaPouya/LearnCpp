@@ -1,2 +1,2 @@
 #pragma once
-#define bigint unsigned long long
+#define bigint long long
