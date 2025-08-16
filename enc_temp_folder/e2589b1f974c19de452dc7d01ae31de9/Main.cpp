@@ -68,7 +68,7 @@ int main()
 
     std::cout << "calling another position object " << std::endl;
     Position pos(10, 15, 18);
-    pos.~Position(); // this usage is pretty rare 
+    pos.~Position();
 
     std::cin.get();
 
