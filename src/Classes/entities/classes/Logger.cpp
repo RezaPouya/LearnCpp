@@ -43,11 +43,12 @@ namespace PouyaLogger {
 	}
 
 
-	std::string GetCurrentTime() {
+	std::string GetCurrentTime() 
+	{
 		static std::mutex timeMutex;  // Static mutex for thread safety
 
 		// Thread-safe locking
-		std::lock_guard<std::mutex> lock(timeMutex);
+		std::scoped_lock<std::mutex> lock(timeMutex);
 
 		// Get current time
 		auto now = std::chrono::system_clock::now();

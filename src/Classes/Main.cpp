@@ -45,8 +45,6 @@ int main()
         "\t z:" << player.GetPosition().GetZ() <<
         std::endl;
 
-
-
     std::cout << "Move Player in direction of  (3,3,4) with speed of 2. ";
     
     player.Move(3, 3, 4, 2);
@@ -64,7 +62,9 @@ int main()
 
 // its 
 struct Vector2 {
-    float X, Y;
+    float X;
+    float Y;
+
     void Add(const Vector2& other) {
         this->X += other.X;
         this->Y += other.Y;

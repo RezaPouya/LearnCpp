@@ -4,7 +4,8 @@
 #include <mutex>  // For thread safety
 
 namespace PouyaLogger {
-    enum LogLevel {
+    enum LogLevel : unsigned char
+    {
         Information = 0,
         Warn = 1,
         Err = 2
@@ -13,13 +14,14 @@ namespace PouyaLogger {
     class Logger {
     private:
         LogLevel currentLogLevel;
-       
 
         // Helper function for actual logging
         void Log(const std::string& message, LogLevel level);
 
     public:
-        Logger() : currentLogLevel(Information) {}
+        Logger() {
+            currentLogLevel = Warning
+        };
 
         void SetLogLevel(LogLevel level) {
             currentLogLevel = level;
