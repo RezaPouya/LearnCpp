@@ -6,3 +6,4 @@ Order of review:
 4- Statics 
 5- Classes 
 6- Inheritance ( inheritance , virtual functions - virtual/override/final)
+7- interfaces ( pure virtual functions )
