@@ -24,15 +24,15 @@ namespace PouyaLogger {
 		std::cout << PouyaTime::TimeHelper::GetCurrentTimeWithPrecision() << " : " << message << std::endl;
 	}
 
-	void Logger::Info(const char* message) {
+	void Logger::Info(const std::string& message) const {
 		Log(message, Information);
 	}
 
-	void Logger::Warning(const char* message) {
+	void Logger::Warning(const std::string& message) const {
 		Log(message, Warn);
 	}
 
-	void Logger::Error(const char* message) {
+	void Logger::Error(const std::string& message) const {
 		Log(message, Err);
 	}
 }

@@ -32,9 +32,8 @@ namespace PouyaLogger {
             currentLogLevel = level;
         }
 
-        // Removed 'const' from return type (it was incorrectly placed)
-        void Info(const char* message);
-        void Warning(const char* message);
-        void Error(const char* message);
+        void Info(const std::string& message) const ;
+        void Warning(const std::string& message) const ;
+        void Error(const std::string& message) const ;
     };
 }
