@@ -5,4 +5,4 @@ Order of review:
 3- References 
 4- Statics 
 5- Classes 
-6- Inheritance 
+6- Inheritance ( inheritance , virtual functions - virtual/override/final)
