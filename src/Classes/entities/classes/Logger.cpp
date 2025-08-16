@@ -41,27 +41,4 @@ namespace PouyaLogger {
 	void Logger::Error(const char* message) {
 		Log(message, Err);
 	}
-
-
-	std::string GetCurrentTime() 
-	{
-		static std::mutex timeMutex;  // Static mutex for thread safety
-
-		// Thread-safe locking
-		std::scoped_lock<std::mutex> lock(timeMutex);
-
-		// Get current time
-		auto now = std::chrono::system_clock::now();
-		std::time_t now_time = std::chrono::system_clock::to_time_t(now);
-
-		// Safe time conversion
-		struct tm tm;
-		localtime_s(&tm, &now_time);  // Windows-safe version
-
-		// Format the time into a string stream
-		std::ostringstream oss;
-		oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
-
-		return oss.str();
-	}
 }
