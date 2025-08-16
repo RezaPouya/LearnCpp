@@ -8,7 +8,7 @@
 
 namespace PouyaLogger {
 
-	void Logger::Log(const std::string& message, LogLevel level)
+	void Logger::Log(const std::string& message, LogLevel level) const 
 	{
 		if (level < currentLogLevel) {
 			return;

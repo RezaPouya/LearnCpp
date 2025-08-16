@@ -19,12 +19,14 @@ namespace PouyaLogger {
         LogLevel currentLogLevel;
         std::mutex logMutex;  // Added mutex for thread safety
 
-        void Log(const std::string& message, LogLevel level);
+        void Log(const std::string& message, LogLevel level) const;
 
     public:
-        Logger() {
-            currentLogLevel = Warn;
-        }  // Fixed initialization
+        Logger() = delete; // this does not let someone to call default constructor
+        //Logger() { currentLogLevel = Warn;}  
+
+        explicit Logger(const LogLevel& logLevel) : currentLogLevel(logLevel){}
+
 
         void SetLogLevel(LogLevel level) {
             currentLogLevel = level;

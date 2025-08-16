@@ -22,9 +22,9 @@ int main()
 
     Player player;
 
-    PouyaLogger::Logger logger;
+    PouyaLogger::Logger logger(PouyaLogger::Warn);
 
-    logger.SetLogLevel(PouyaLogger::Information);
+    //logger.SetLogLevel(PouyaLogger::Information);
     
     logger.Info("Player is created");
 
@@ -54,6 +54,9 @@ int main()
         "\t y:" << player.GetPosition().GetY() <<
         "\t z:" << player.GetPosition().GetZ() <<
         std::endl;
+
+    logger.Warning("Player moved by (3,3,4,2)");
+    logger.Error("Player moved by (3,3,4,2)");
 
     std::cin.get();
 
