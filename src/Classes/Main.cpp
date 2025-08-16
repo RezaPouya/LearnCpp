@@ -5,6 +5,10 @@
 
 #define Log(x) std::cout << x << std::endl ; 
 
+// when we moving out from this context , DeConstructor of position class is called 
+void Function() {
+    Position::Position(10, 15, 18);
+}
 
 int main()
 {
@@ -58,6 +62,7 @@ int main()
     logger.Warning("Player moved by (3,3,4,2)");
     logger.Error("Player moved by (3,3,4,2)");
 
+    Function();
     std::cin.get();
 
     return 0;

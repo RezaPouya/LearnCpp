@@ -4,10 +4,10 @@
 
 class Player {
 private:
-    std::unique_ptr<Position> _position;
+    std::unique_ptr<Position> m_position;
 
 public:
-    Player(int x = 0, int y = 0, int z = 0);
+    explicit Player(int x = 0, int y = 0, int z = 0);
     ~Player() = default;
 
     // Delete copy operations (unique_ptr is non-copyable)

@@ -13,6 +13,7 @@ Position::~Position() {
 	x = 0;
 	y = -10000;
 	z = 0;
+	std::cout << "position destroyed and set to (0 , -10000 , 0 )" << std::endl;
 }
 
 void Position::Move(int xAdd, int yAdd, int zAdd, int moveSpeed) {
