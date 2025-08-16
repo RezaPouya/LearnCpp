@@ -16,15 +16,9 @@ namespace PouyaLogger {
 
 		std::cout << std::endl;
 		switch (level) {
-		case Information:
-			std::cout << "[INFO] ";
-			break;
-		case Warn:
-			std::cout << "[WARN] ";
-			break;
-		case Err:
-			std::cout << "[ERROR] ";
-			break;
+		case Information: std::cout << "[INFO] "; break;
+		case Warn: std::cout << "[WARN] ";break;
+		case Err: std::cout << "[ERROR] ";break;
 		}
 
 		std::cout << PouyaTime::TimeHelper::GetCurrentTimeWithPrecision() << " : " << message << std::endl;

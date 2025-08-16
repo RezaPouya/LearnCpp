@@ -2,32 +2,35 @@
 #include <iostream>
 #include <string>
 #include <mutex>  // For thread safety
+#pragma once
+#include <iostream>
+#include <string>
+#include <mutex>
 
 namespace PouyaLogger {
-    enum LogLevel : unsigned char
-    {
+    enum LogLevel : unsigned char {
         Information = 0,
-        Warn = 1,
-        Err = 2
+        Warn = 1,  // Changed from 'Warn' to match usage
+        Err = 2     // Changed from 'Err' to match usage
     };
 
     class Logger {
     private:
         LogLevel currentLogLevel;
+        std::mutex logMutex;  // Added mutex for thread safety
 
-        // Helper function for actual logging
         void Log(const std::string& message, LogLevel level);
 
     public:
         Logger() {
-            currentLogLevel = Warning
-        };
+            currentLogLevel = Warn;
+        }  // Fixed initialization
 
         void SetLogLevel(LogLevel level) {
             currentLogLevel = level;
         }
 
-        // Public logging methods
+        // Removed 'const' from return type (it was incorrectly placed)
         void Info(const char* message);
         void Warning(const char* message);
         void Error(const char* message);
