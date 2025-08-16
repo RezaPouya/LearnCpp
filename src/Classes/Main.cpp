@@ -5,6 +5,12 @@
 
 #define Log(x) std::cout << x << std::endl ; 
 
+// visibility : private , protected , public 
+// visibility has no effect on generated machine code and is purely semantic concept 
+// friend keyword is for making another class a friend of current class so friend class to be able to access
+// private member of class 
+
+
 // when we moving out from this context , DeConstructor of position class is called 
 // if we use new(), we should call deConstructor
 void Function() {

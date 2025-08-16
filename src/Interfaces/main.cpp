@@ -29,7 +29,10 @@ public:
 	}
 };
 
-class Player : public Entity , public IPrintable {
+/// <summary>
+/// Use final (C++11) if a subclass should not be overridden further
+/// </summary>
+class Player final : public Entity , public IPrintable {
 
 public:
 	const std::string Name;
