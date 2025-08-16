@@ -2,7 +2,7 @@
 #define Log(x) std::cout << x << std::endl ; 
 
 
-void increment(int a) {
+void increment( int a) {
 	a = a + 1;
 }
 
@@ -24,39 +24,44 @@ int main()
 {
 	Log("References");
 	Log("");
-	Log("References are just pointer in disguise, for computers its just like pointers , for us there are some semantic differences!");
-	Log("A reference is a way to referencing EXISTING variable!");
-	Log("A reference is not a variable and doesn't take memory!");
-	Log("int& : & is part of type and the meaning is depend to the context ");
-	Log("int& refToA = a; : 'refToA'  is actually an allias to variable 'a' not new variable !! its just in source code and wont exists in compiled code");
-	Log("");
+	Log("References are just pointer in disguise, for computers its just like pointers , for us there are some semantic differences!")
+	Log("A reference is a way to referencing EXISTING variable!")
+	Log("A reference is not a variable and doesn't take memory!")
+	Log("int& : & is part of type and the meaning is depend to the context ")
+	Log("int& refToA = a; : 'refToA'  is actually an allias to variable 'a' not new variable !! its just in source code and wont exists in compiled code")
+	Log("")
+	Log("")
+	Log("")
+	Log("")
+	Log("")
+	Log("")
 
 	int a = 5;
 	int& refToA = a; //
-	Log(refToA);
+	Log(refToA)
 	refToA = 2;
-	Log(refToA);
-	Log("");
+	Log(refToA)
+	Log("")
 
 
 	increment(a);
-	Log("a after we called 'increment(a)', the result of 'Log(refToA)' is:");
-	Log(refToA);
-	Log("it didn't show incremented value because we send the parameter by value and it create another copy of it an increase the local copy ");
-	Log("");
+	Log("a after we called 'increment(a)', the result of 'Log(refToA)' is:")
+	Log(refToA)
+	Log("it didn't show incremented value because we send the parameter by value and it create another copy of it an increase the local copy ")
+	Log("")
 	incrementByRef(a);
-	Log("");
-	Log("a after we called ' incrementByRef(a)', the result of 'Log(refToA)' is:");
-	Log(refToA);
-	Log("a after we called 'void incrementByRef(int& a)' by'ncrementByRef(a)', the result of 'Log(refToA)' is:")
+	Log("")
+	Log("a after we called ' incrementByRef(a)', the result of 'Log(refToA)' is:")
+	Log(refToA)
+	Log("a after we called 'void incrementByRef(int& a)' by 'incrementByRef(a)', the result of 'Log(refToA)' is:")
 
-	Log("");
+	Log("")
 	incrementBySendingThePointer(&a);
 	Log("");
 	Log("a after we called ' incrementBySendingThePointer(a)', the result of 'Log(refToA)' is:");
-	Log(refToA);
+	Log(refToA)
 	Log("a after we called 'void incrementBySendingThePointer(int* a)' by' incrementBySendingThePointer(&a)', the result of 'Log(refToA)' is:")
-	Log("");
+	Log("")
 
 	int b = 5;
 	int c = 6;

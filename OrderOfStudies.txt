@@ -1,0 +1,8 @@
+Order of review:
+
+1- HelloCpp 
+2- Raw Pointers 
+3- References 
+4- Statics 
+5- Classes 
+6- Inheritance 

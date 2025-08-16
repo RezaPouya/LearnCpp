@@ -2,10 +2,10 @@
 
 
 // int s_Variable = 5;
-extern int s_Variable; // external linking its just 
+const extern int s_Variable; // external linking its just 
 
 void Function() {
-
+    return;
 };
 
 struct Entity {
@@ -19,7 +19,7 @@ struct Entity {
     }
 };
 
-// in C++, static member variables must be both declared inside the class and defined outside of it.
+// in C++, static member variables must be both declared inside the class and outside of it.
 int Entity::x = 0;  // Must appear exactly once in the program
 int Entity::y = 0;
 
