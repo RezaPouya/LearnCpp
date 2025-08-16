@@ -17,10 +17,7 @@ class Player : public Entity {
 
 public:
 	const char* Name;
-	Player(const char* name, float x, float y) : Entity(x, y)
-	{
-		Name = name;
-	}
+	Player(const char* name, float x, float y)  : Entity(x, y) , Name(name) {}
 };
 
 void PrintEntityPos(const Entity& entity) {
@@ -35,7 +32,10 @@ int main()
 
 	std::cout << "size of entity obj is '" << sizeof(entity) << std::endl;
 	std::cout << "size of player obj is '" << sizeof(player) << std::endl;
-	std::cout << "Player name is '" << player.Name << "' and hen is at (" << player.X << "," << player.Y << ")." << std::endl;
+
+	std::cout << "Player name is '" << player.Name <<
+		"' and hen is at (" << player.X << "," << player.Y << ")." 
+		<< std::endl;
 
 	PrintEntityPos(player);
 
