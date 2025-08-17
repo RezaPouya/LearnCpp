@@ -9,4 +9,4 @@ Order of review:
 7- interfaces ( pure virtual functions )
 
 9- const ( const , mutable and basic lambda )
-10- instantiate
+10- instantiate ( new , delete , malloc )
