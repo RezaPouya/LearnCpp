@@ -30,6 +30,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Const", "src\Const\Const.vc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Instantiate", "src\Instantiate\Instantiate.vcxproj", "{46F6A640-433B-42FB-93DB-9972EF7A49FF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperatorOverloading", "src\OperatorOverloading\OperatorOverloading.vcxproj", "{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -126,6 +128,14 @@ Global
 		{46F6A640-433B-42FB-93DB-9972EF7A49FF}.Release|x64.Build.0 = Release|x64
 		{46F6A640-433B-42FB-93DB-9972EF7A49FF}.Release|x86.ActiveCfg = Release|Win32
 		{46F6A640-433B-42FB-93DB-9972EF7A49FF}.Release|x86.Build.0 = Release|Win32
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Debug|x64.ActiveCfg = Debug|x64
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Debug|x64.Build.0 = Debug|x64
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Debug|x86.ActiveCfg = Debug|Win32
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Debug|x86.Build.0 = Debug|Win32
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Release|x64.ActiveCfg = Release|x64
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Release|x64.Build.0 = Release|x64
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Release|x86.ActiveCfg = Release|Win32
+		{F87B476E-72A4-4A88-88EE-EA31A6BEABEF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
