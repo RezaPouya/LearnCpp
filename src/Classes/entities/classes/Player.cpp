@@ -1,6 +1,7 @@
 #include "../headers/Player.h"
 #include <utility>  // For std::move
 
+// member initializer is faster 
 Player::Player(int x, int y, int z)
 	: m_position(std::make_unique<Position>(x, y, z)) {
 }
