@@ -46,7 +46,18 @@ public:
 
 };
 
+class ImplicitConversion {
+private:
+	std::string m_Name;
+	int m_Age;
+public:
+	ImplicitConversion(const std::string& m_Name ): m_Name(m_Name){}
 
+	ImplicitConversion(int m_age) : m_Age(m_age) {}
+
+	ImplicitConversion(const std::string& m_Name, int m_age)
+		: m_Name(m_Name), m_Age(m_age){}
+};
 
 int main()
 {
@@ -121,6 +132,12 @@ int main()
 	// tenary operators 
 	int level = 5; 
 	const char* grade = level < 20 ? "Begginer" : "Advanced";
+
+
+	const std::string& nn = std::string("Reza");
+	ImplicitConversion ic1 = nn;
+	ImplicitConversion ic2 = 35;
+	ImplicitConversion ic3 = { "Reza Pouya" , 35 };
 
 	std::cin.get();
 
