@@ -12,3 +12,5 @@ Order of review:
 10- const ( const , mutable and basic lambda )
 11- instantiate ( new , delete , malloc )
 12- operator-overloading
+13- This
+14- ObjectLifeTime
