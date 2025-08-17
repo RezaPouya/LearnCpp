@@ -2,11 +2,12 @@
 
 // const is a promise , it can be changed if you really want !!!
 
+using String = std::string;
 
 class Entity {
 private:
 	int m_X;
-	mutable int var; // lets this variable be changed in const function 
+	mutable int var; // lets this variable be changed in const function ( first meaning of mutable ) 
 	int* m_Y;
 	int* m_a, m_b; /// here m_b is not a pointer if we write all member in a line 
 	// if we want to make m_b a pointer as well we should write '*m_b'
@@ -48,8 +49,19 @@ public:
 		m_X = value;
 	}
 
-	void SetX(int value) {
-		m_X = value;
+};
+
+class MutableExample {
+private:
+	String m_Name;
+	mutable int m_DebugCallCount = 0;
+public:
+
+	
+	// const mean we cannot change actual class member in context of this method 
+	const String& GetName() const {
+		MutableExample::m_DebugCallCount++;
+		return m_Name;
 	}
 };
 
@@ -96,5 +108,45 @@ int main()
 	//*ptr4 = 6;; // not allowed 
 	// ptr4 = &b4 // not allowed 
 
-	std::cout << "Hello World!\n";
+
+	const MutableExample me;
+	me.GetName();
+
+	// another use of mutable is within lambda ( little throw away functions ) 
+
+	int x = 8;
+
+	// capture parameters:
+	// [xs] --> by value ,
+	// [&xs] --> by reference ,
+	// [&] --> pass everything by reference ,
+	// [=] --> pass everything by value
+
+	auto func = [&x]() {
+		//xs++; // its not allwed , unless we capture it in as [&xs]
+		x++;
+		std::cout << "Hello from lambda expression 1 in cpp - PASS BY REFERENCE  'xs' is: " << xs << std::endl;
+		}; // func 
+
+
+	auto func2 = [x]()  {
+		//xs++;// its not allowed 
+		std::cout << "Hello from lambda expression 2 in cpp - PASS BY VALUE  'xs' is: " << xs << std::endl;
+		}; // func
+
+
+	auto func3 = [=]() mutable {
+		x++;
+		std::cout << "Hello from lambda expression 2 in cpp - PASS BY VALUE ( mutable lambda )  'xs' is: " << xs << std::endl;
+		};  // its just make an copy of xs and the increase the copy  , outside of this function x still have 
+
+
+	func();
+	func2();
+	func3();
+	func();
+	func2();
+	func3();
+
+	std::cin.get();
 }
