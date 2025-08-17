@@ -118,6 +118,10 @@ int main()
 
 	MemberInitializerExample example;
 
+	// tenary operators 
+	int level = 5; 
+	const char* grade = level < 20 ? "Begginer" : "Advanced";
+
 	std::cin.get();
 
 	return 0;
