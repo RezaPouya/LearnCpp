@@ -9,7 +9,5 @@ Order of review:
 7- interfaces ( pure virtual functions )
 8- arrays ( raw arrays )
 9- strings
-7- interfaces ( pure virtual functions )
-
-9- const ( const , mutable and basic lambda )
-10- instantiate ( new , delete , malloc )
+10- const ( const , mutable and basic lambda )
+11- instantiate ( new , delete , malloc )

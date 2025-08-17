@@ -4,7 +4,7 @@
 // what is arrays : arrays are basically collection of elements in particular order 
 
 void firstArrayExample() {
-    int16_t primeNumbersUnderTen[4];
+    short primeNumbersUnderTen[4];
     primeNumbersUnderTen[0] = 2;
     primeNumbersUnderTen[1] = 3;
     primeNumbersUnderTen[2] = 5;
@@ -18,9 +18,9 @@ void firstArrayExample() {
     std::cout << "we can access to array element by index primeNumbersUnderTen[2] ( 3rd element of array ) : " << primeNumbersUnderTen[2] << std::endl ;
 
 
-    int16_t primeNumbersUnder20[8] = { 2,3,5,7,11,13,17,19 };
+    short primeNumbersUnder20[8] = { 2,3,5,7,11,13,17,19 };
 
-    int arrayCount = sizeof(primeNumbersUnder20) / sizeof(int16_t);
+    int arrayCount = sizeof(primeNumbersUnder20) / sizeof(short);
 
     std::cout << "prime number under 20 are " << arrayCount << std::endl;
 
@@ -92,6 +92,7 @@ public:
     int heapArrayCount;
 
     MemoryFragmentation() {
+
         for (int i = 0; i < 5; i++) {
             example[i] = i + 1;
         };

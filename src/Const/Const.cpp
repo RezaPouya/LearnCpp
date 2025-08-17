@@ -125,19 +125,19 @@ int main()
 	auto func = [&x]() {
 		//xs++; // its not allwed , unless we capture it in as [&xs]
 		x++;
-		std::cout << "Hello from lambda expression 1 in cpp - PASS BY REFERENCE  'xs' is: " << xs << std::endl;
+		std::cout << "Hello from lambda expression 1 in cpp - PASS BY REFERENCE  'xs' is: " << x << std::endl;
 		}; // func 
 
 
 	auto func2 = [x]()  {
 		//xs++;// its not allowed 
-		std::cout << "Hello from lambda expression 2 in cpp - PASS BY VALUE  'xs' is: " << xs << std::endl;
+		std::cout << "Hello from lambda expression 2 in cpp - PASS BY VALUE  'xs' is: " << x << std::endl;
 		}; // func
 
 
 	auto func3 = [=]() mutable {
 		x++;
-		std::cout << "Hello from lambda expression 2 in cpp - PASS BY VALUE ( mutable lambda )  'xs' is: " << xs << std::endl;
+		std::cout << "Hello from lambda expression 2 in cpp - PASS BY VALUE ( mutable lambda )  'xs' is: " << x << std::endl;
 		};  // its just make an copy of xs and the increase the copy  , outside of this function x still have 
 
 

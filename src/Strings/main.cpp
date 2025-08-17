@@ -32,12 +32,12 @@ int main()
     std::cout << std::endl;
     char thirdName[] = { 'R', 'e' , 'z' , 'a' , ' ' , 'P' , 'o' , 'u' , 'y' , 'a' };
 
-    std::cout << thirdName << std::endl;
+    std::cout << "third-name : " << thirdName << std::endl;
 
     std::cout << std::endl;
     char fourthName[] = { 'R', 'e' , 'z' , 'a' , ' ' , 'P' , 'o' , 'u' , 'y' , 'a' , 0 };
 
-    std::cout << fourthName << std::endl;
+    std::cout << "fourth-name : " << fourthName << std::endl;
     std::cout << std::endl;
     std::cout << std::endl;
     std::cout << std::endl;
