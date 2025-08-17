@@ -70,7 +70,6 @@ int main()
     PrintStringPassByRef(str);
     std::cout << str <<   std::endl;
 
-
     std::cin.get();
 }
 
