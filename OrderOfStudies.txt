@@ -8,4 +8,4 @@ Order of review:
 6- Inheritance ( inheritance , virtual functions - virtual/override/final)
 7- interfaces ( pure virtual functions )
 
-9- const 
+9- const ( const , mutable and basic lambda )
