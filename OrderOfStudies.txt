@@ -16,3 +16,5 @@ Order of review:
 14- ObjectLifeTime
 15- SmartPointer
 16- Copy
+17- Arrow functions 
+18- Vector ( Dynamic Array )
