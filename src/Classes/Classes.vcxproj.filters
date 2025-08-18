@@ -5,6 +5,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="entities\classes\Player.cpp" />
     <ClCompile Include="entities\classes\Position.cpp" />
+    <ClCompile Include="entities\ExampleClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entities\headers\Logger.h" />
