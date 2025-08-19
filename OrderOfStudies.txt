@@ -21,3 +21,48 @@ Order of review:
 19- Static Linking 
 20- Dynamic Linking ( need more study)
 21- Game/GameEngineLib ( using libraries)
+22- ReturnMultipleItemFromFunctions
+
+
+
+
+$(SolutionDir)bin\$(Platform)\$(Configuration)\
+$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
+
+
+alternative 
+$(SolutionDir)bin\$(ProjectName)\$(Platform)\$(Configuration)\
+$(SolutionDir)bin\$(ProjectName)\$(Platform)\intermediates\$(Configuration)\
+
+=========================================
+static linking 
+
+-- C/c++ -> General -> Additional Include Directories:
+$(SolutionDir)dependencies\include\
+
+
+-- Linker -> General  --> Additional Library Directories 
+$(SolutionDir)dependencies\dlls
+
+-- Linker -> General  --> Additional Dependencies  ( add these ) 
+glfw3.lib;glfw3_ml.lib;
+
+
+
+=============================================
+dynamic linking
+
+-- C/C++ -> General -> Additional Include Directories:
+$(SolutionDir)dependencies\include\
+
+
+-- Linker -> General  --> Additional Library Directories 
+$(SolutionDir)dependencies\dlls
+
+
+-- Linker -> General  --> Additional Dependencies  ( add these )  
+glfw3dll.lib;
+
+
+-- C/C++ -> PreProcessor -> 
+GLFW_DLL
