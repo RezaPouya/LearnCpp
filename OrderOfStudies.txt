@@ -18,3 +18,6 @@ Order of review:
 16- Copy
 17- Arrow functions 
 18- Vector ( Dynamic Array )
+19- Static Linking 
+20- Dynamic Linking ( need more study)
+21- Game/GameEngineLib ( using libraries)
