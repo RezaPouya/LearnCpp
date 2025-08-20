@@ -34,7 +34,7 @@ namespace PouyaTime {
 
 		static std::string GetCurrentTimeWithPrecision() {
 			static std::mutex timeMutex;
-			std::lock_guard<std::mutex> lock(timeMutex);
+			std::scoped_lock<std::mutex> lock(timeMutex);
 
 			// Get the current time with high precision
 			auto now = std::chrono::system_clock::now();
@@ -64,6 +64,14 @@ namespace PouyaTime {
 				<< "]";
 
 			return oss.str();
+		}
+
+
+		std::string formatTimePoint(const std::chrono::system_clock::time_point& tp) const {
+			auto in_time_t = std::chrono::system_clock::to_time_t(tp);
+			std::stringstream ss;
+			ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %H:%M:%S");
+			return ss.str();
 		}
 	};
 }
