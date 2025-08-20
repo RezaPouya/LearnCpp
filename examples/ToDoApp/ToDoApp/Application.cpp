@@ -1,6 +1,8 @@
 // ToDoApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 //$(SolutionDir)bin\examples\to-do-app\$(ProjectName)\$(Platform)\$(Configuration)\
+
+
 #include <iostream>
 
 int main()

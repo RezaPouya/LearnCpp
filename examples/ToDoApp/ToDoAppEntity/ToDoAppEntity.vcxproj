@@ -147,13 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="entities\headers\NoteCategory.h" />
-    <ClInclude Include="entities\headers\Note.h" />
+    <ClInclude Include="entities\headers\TaskCategory.h" />
+    <ClInclude Include="entities\headers\Task.h" />
     <ClInclude Include="Utilities\TimeHelper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dtos\NoteOutputDto.h" />
-    <ClCompile Include="entities\Note.cpp" />
+    <ClCompile Include="Dtos\TaskOutputDto.h" />
+    <ClCompile Include="entities\Task.cpp" />
     <ClCompile Include="Utilities\EnumHelpers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

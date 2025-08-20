@@ -1,6 +1,6 @@
 #pragma once
 
-enum struct NoteCategory : char {
+enum struct TaskCategory : char {
 	Personal = 0,
 	Work = 1,
 	Learning = 2,

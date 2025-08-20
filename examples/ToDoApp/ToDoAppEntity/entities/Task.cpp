@@ -1,9 +1,9 @@
-#include "headers/Note.h"
+#include "headers/Task.h"
 
 #include <memory>
 
 // Constructor implementation
-Note::Note(const int id, const std::string& title, const std::string& content)
+Task::Task(const int id, const std::string& title, const std::string& content)
     : m_id(id),
     m_title(title),
     m_content(content),
@@ -12,13 +12,15 @@ Note::Note(const int id, const std::string& title, const std::string& content)
 }
 
 // GetInfo implementation
-std::unique_ptr<NoteOutputDto> Note::GetInfo() const {
-    return std::make_unique<NoteOutputDto>(
+std::unique_ptr<TaskOutputDto> Task::GetInfo() const {
+    return std::make_unique<TaskOutputDto>(
         m_id,
+        m_isDone,
         m_noteCategory,
         m_title,
         m_content,
         m_createdAt,
-        m_lastUpdatedAt
+        m_lastUpdatedAt,
+        m_doneAt
     );
 }
