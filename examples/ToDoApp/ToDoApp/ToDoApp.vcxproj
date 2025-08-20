@@ -148,7 +148,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Manages\TaskManager.cpp" />
+    <ClCompile Include="Manages\CommandManager.cpp" />
+    <ClCompile Include="Manages\CommandManager.h" />
+    <ClCompile Include="TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToDoAppEntity\ToDoAppEntity.vcxproj">
