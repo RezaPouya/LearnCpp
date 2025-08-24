@@ -1,61 +1,84 @@
 #include <iostream>
 #include <tuple>
+#include<vector>
+#include<array>
+#include <functional>
 
-struct FullNameDto {
-    std::string FirstName;
-    std::string LastName;
-    short Age;
-    FullNameDto(std::string fname , std::string lname , short age) : FirstName(fname) , LastName(lname) , Age(age){}
-};
+//template<typename std::vector<T,TSize> vectors, typename void(*func)(P)>
+//void ForEach(std::vector<T, TSize> vectors, U) {
+//    for (auto t : T)
+//        U();
+//}
 
-struct FullName {
-private: 
-    std::string fname;
-    std::string lname;
-    short age;
-
+class Counter {
+private:
+	int m_Id = 0;
 public:
-
-    FullName(std::string fname, std::string lname, short age) : fname(fname), lname(lname), age(age) {}
-
-    std::tuple<std::string, std::string> GetName() {
-        return std::make_pair(fname, lname);
-    }
-
-    std::pair<std::string, std::string> GetNameAsPair() {
-        return std::make_pair(fname, lname);
-    }
-
-    FullNameDto GetDto() {
-        FullNameDto dto(fname, lname, age);
-    }
-
-    const void Print() {
-        std::cout << fname << " " << lname << " - " << age;
-    }
-
-    static void Print(const std::tuple<std::string, std::string> tp)  {
-        std::cout << std::get<0>(tp) << " " << std::get<0>(tp) ;
-    }
+	Counter() {
+		static int counter = 1000;
+		m_Id = ++counter;
+	}
+	const int GetId() const { return m_Id; }
 };
 
-std::tuple<std::string, std::string> GetName();
+template<typename T>
+void Print(T p) {
+	std::cout << p << "\n";
+}
+
+void forEach(const std::array<int, 3>& values, void(*func)(int p)) {
+	for (auto v : values) {
+		func(v);
+	}
+}
+
+template<class T , size_t TSize>
+void PrintForEach(const std::array<const T, TSize>& values , void(*funcP)(const T& t)) 
+{
+	for (auto v : values) {
+		funcP(v);
+	}
+  // do nothing
+}
+
+//template<class T, int TSize, class P >
+//void ForEach(const std::array<T, TSize>& values, void(*func)(P)) {
+//
+//	for (auto v : values) {
+//		func(v);
+//	}
+//}
+
+// C++20 concept version
+template<typename T, size_t N, std::invocable<const T&> Func>
+void ModernForEach(const std::array<T, N>& values, Func func) {
+	for (auto v : values) {
+		func(v);
+	}
+}
+
+void PrintReference(const Counter& p) {
+	std::cout << p.GetId() << "\n";
+}
+
 
 int main()
 {
-    FullName person("Reza", "Pouya", 35);
-    person.Print();
 
-    std::cin.get();
+	// static array 
+	std::array<int, 3> data = { 1,2,3 };
+	
+	void(*funcP)(const Counter& t)  = PrintReference;
+
+	forEach(data, [](int value) { Print(value); });
+	forEach(data, Print );
+
+
+	Counter c1, c2, c3;
+	std::array<const Counter, 3> data2 = { c1 , c2 , c3 };
+
+	PrintForEach(data2, PrintReference);
+	ModernForEach(data2, [](Counter p) {std::cout << p.GetId() << "\n"; });
+
+	std::cin.get();
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

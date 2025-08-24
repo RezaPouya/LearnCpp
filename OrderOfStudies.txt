@@ -22,6 +22,7 @@ Order of review:
 20- Dynamic Linking ( need more study)
 21- Game/GameEngineLib ( using libraries)
 22- ReturnMultipleItemFromFunctions( Tuple , Pair)
+23- FunctionPointer( Function Pointer and Lambdas)
 
 
 
