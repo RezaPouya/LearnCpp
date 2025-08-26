@@ -33,16 +33,16 @@ const ResultDto* ReturnStruct()  {
 int main()
 {
     {
-        auto result = ReturnFromTuple();
+        const auto& result = ReturnFromTuple();
 
-        auto fname = std::get<0>(result);
-        auto lname = std::get<0>(result);
+        const auto& fname = std::get<0>(result);
+        const auto& lname = std::get<0>(result);
 
         std::cout << fname << " " << lname;
     }
     
     {
-        auto result = ReturnFromPair();
+        const auto& result = ReturnFromPair();
 
         std::cout << result.first << " " << result.second;
     }
