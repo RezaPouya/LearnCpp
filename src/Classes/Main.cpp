@@ -58,6 +58,23 @@ public:
 		: m_Name(m_Name), m_Age(m_age){}
 };
 
+
+class Base {
+public:
+	virtual ~Base() { // Virtual destructor
+		// Base class cleanup
+	}
+};
+
+class Derived : public Base {
+public:
+	~Derived() override { // Derived class destructor
+		// Derived class cleanup (e.g., freeing dynamically allocated memory)
+	}
+};
+
+
+
 int main()
 {
 
@@ -137,6 +154,10 @@ int main()
 	ImplicitConversion ic1 = nn;
 	ImplicitConversion ic2 = 35;
 	ImplicitConversion ic3 = { "Reza Pouya" , 35 };
+
+
+	Base* obj = new Derived(); // Pointer to base class, pointing to derived object
+	delete obj; // Calls Derived's destructor, then Base's destructor
 
 	std::cin.get();
 

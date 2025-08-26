@@ -66,6 +66,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FunctionPointer", "src\Func
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Threads", "src\Threads\Threads.vcxproj", "{1C1721F0-FA4A-447F-918C-BA37EAFAD590}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Benchmarking", "src\Benchmarking\Benchmarking.vcxproj", "{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -290,6 +292,14 @@ Global
 		{1C1721F0-FA4A-447F-918C-BA37EAFAD590}.Release|x64.Build.0 = Release|x64
 		{1C1721F0-FA4A-447F-918C-BA37EAFAD590}.Release|x86.ActiveCfg = Release|Win32
 		{1C1721F0-FA4A-447F-918C-BA37EAFAD590}.Release|x86.Build.0 = Release|Win32
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Debug|x64.ActiveCfg = Debug|x64
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Debug|x64.Build.0 = Debug|x64
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Debug|x86.Build.0 = Debug|Win32
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Release|x64.ActiveCfg = Release|x64
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Release|x64.Build.0 = Release|x64
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Release|x86.ActiveCfg = Release|Win32
+		{2E6672FE-3BC9-477F-B9BA-23D05D3A1EE9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
