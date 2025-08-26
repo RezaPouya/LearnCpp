@@ -47,6 +47,12 @@ int main()
         std::cout << result.first << " " << result.second;
     }
 
+    { 
+        // STRUCTURE_BIDNING
+        // only in c++ 17++ 
+        auto[first, second] = ReturnFromTuple();
+        std::cout << first << " " << second;
+    }
 
     {
         auto result = ReturnStruct();

@@ -21,15 +21,13 @@ Order of review:
 19- Static Linking 
 20- Dynamic Linking ( need more study)
 21- Game/GameEngineLib ( using libraries)
-22- ReturnMultipleItemFromFunctions( Tuple , Pair)
+22- ReturnMultipleItemFromFunctions( Tuple , Pair) - Structure Binding 
 23- FunctionPointer( Function Pointer and Lambdas)
-
 
 
 
 $(SolutionDir)bin\$(Platform)\$(Configuration)\
 $(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
-
 
 alternative 
 $(SolutionDir)bin\$(ProjectName)\$(Platform)\$(Configuration)\
