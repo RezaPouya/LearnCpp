@@ -1,5 +1,8 @@
 #include <iostream>
 #include <array>
+#include <memory>
+#include <vector>
+
 
 // what is arrays : arrays are basically collection of elements in particular order 
 
@@ -27,6 +30,46 @@ void firstArrayExample() {
     for (int i = 0; i < arrayCount; i++) {
         std::cout << i <<  " : " << primeNumbersUnder20[i] << std::endl;
     }
+}
+
+
+void MultiDimensioalArrays() {
+
+    int** twoDimensionalArray = new int*[5];
+    
+    for (int i = 0; i < 5; i++) {
+        twoDimensionalArray[i] = new int[20];
+
+        for (size_t j = 0; j < 20; j++)
+        {
+            twoDimensionalArray[i][j] = i + j;
+        }
+    }
+
+    std::vector<std::array<int, 5>> t2Array;
+    for (auto v : t2Array) {
+        for (auto v2 : v) {
+            v2 = 2;
+        }
+    }
+
+
+    /// we can save multi dimensional array in noraml arays 
+
+     auto cartasianPoints5x5 = new int[25];
+
+     int j = 0;
+     for (int i = 0; i < 5; i++)
+     {
+         for (int j = 0; j < 5; j++)
+             cartasianPoints5x5[i + j * 5] = (j * 5) + i;
+     }
+
+     for (int i = 0; i < 25; i++)
+         std::cout << cartasianPoints5x5[i] << ", ";
+
+     std::cout << "\n";
+
 }
 
 
@@ -134,6 +177,10 @@ int main()
         std::cout << array[i] << ", ";
     }
 
+    std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;   std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+    std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+
+    MultiDimensioalArrays();
 
     std::cin.get();
 }
