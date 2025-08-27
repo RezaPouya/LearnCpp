@@ -147,8 +147,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="entities\headers\TaskCategory.h" />
+    <ClInclude Include="entities\headers\Enums.h" />
     <ClInclude Include="entities\headers\Task.h" />
+    <ClInclude Include="pch.h" />
     <ClInclude Include="Utilities\TimeHelper.h" />
   </ItemGroup>
   <ItemGroup>

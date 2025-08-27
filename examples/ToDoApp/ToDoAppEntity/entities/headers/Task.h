@@ -1,14 +1,7 @@
-#pragma once
-#include <sstream>
-#include <string>
-#include <format>
-#include <chrono>
-#include <iostream>
-#include "TaskCategory.h"
-#include "../Dtos/TaskOutputDto.h"
+#include "../../pch.h"
+#include "../../Dtos/TaskOutputDto.h"
 #include "../../Utilities/TimeHelper.h"
-#include "../../Utilities/TimeHelper.h"
-
+#include "Enums.h"
 
 using Clock = std::chrono::time_point<std::chrono::system_clock>;
 
@@ -21,7 +14,7 @@ private:
 	Clock m_createdAt;
 	Clock m_lastUpdatedAt;
 	bool m_isDone = false;
-	Clock m_doneAt;
+	std::optional<Clock> m_doneAt;
 
 public:
 	// Constructor declaration
@@ -76,8 +69,18 @@ public:
 	}
 
 	std::string getFormattedDoneAt() const {
-		return (m_isDone) ? MyUtilities::TimeHelper::FormatTimePoint(m_doneAt) : "Not completed";
+		return (m_doneAt.has_value()) ? MyUtilities::TimeHelper::FormatTimePoint(m_doneAt.value()) : "Not completed";
 	}
+
+
+	int GetId() const { return m_id; }
+	TaskCategory GetCategory() const { return m_noteCategory; }
+	std::string GetTitle() const { return m_title; }
+	std::string GetContent() const { return m_content; }
+	Clock GetCreatedAt() const { return m_createdAt; }
+	Clock GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+	bool GetIsDone() const { return m_isDone; }
+	std::optional< Clock> GetDoneAt() const { return m_doneAt; }
 
 private:
 	void updateLastUpdated() {

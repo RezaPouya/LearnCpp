@@ -1,7 +1,4 @@
 #include "headers/Task.h"
-
-#include <memory>
-
 // Constructor implementation
 Task::Task(const int id, const std::string& title, const std::string& content)
     : m_id(id),

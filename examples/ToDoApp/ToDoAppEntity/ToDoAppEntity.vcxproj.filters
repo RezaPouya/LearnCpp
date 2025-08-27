@@ -3,7 +3,8 @@
   <ItemGroup>
     <ClInclude Include="entities\headers\Task.h" />
     <ClInclude Include="Utilities\TimeHelper.h" />
-    <ClInclude Include="entities\headers\TaskCategory.h" />
+    <ClInclude Include="entities\headers\Enums.h" />
+    <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="entities\Task.cpp" />
