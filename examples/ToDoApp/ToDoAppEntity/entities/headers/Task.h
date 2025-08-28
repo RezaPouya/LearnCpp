@@ -18,28 +18,28 @@ private:
 
 public:
 	// Constructor declaration
-	Task(int id, const std::string& title, const std::string& content);
+	Task(int id, const std::string& title, const std::string& content , const TaskCategory category);
 
 	// Getters
 	std::unique_ptr<TaskOutputDto> GetInfo() const;
 
 	// Setters with automatic timestamp updates
-	void setTitle(const std::string_view& newTitle) {
+	void SetTitle(const std::string_view& newTitle) {
 		m_title = newTitle;
 		m_lastUpdatedAt = std::chrono::system_clock::now();
 	}
 
-	void setContent(const std::string_view& newContent) {
+	void SetContent(const std::string_view& newContent) {
 		m_content = newContent;
 		m_lastUpdatedAt = std::chrono::system_clock::now();
 	}
 
-	void setCategory(TaskCategory newCategory) {
+	void SetCategory(TaskCategory newCategory) {
 		m_noteCategory = newCategory;
 		m_lastUpdatedAt = std::chrono::system_clock::now();
 	}
 
-	void markAsDone() {
+	void MarkAsDone() {
 		if (!m_isDone) {
 			m_isDone = true;
 			m_doneAt = std::chrono::system_clock::now();
@@ -47,7 +47,7 @@ public:
 		}
 	}
 
-	void markAsUndone() {
+	void MarkAsUndone() {
 		if (m_isDone) {
 			m_isDone = false;
 			m_doneAt = Clock{}; // Reset to default time point
@@ -55,8 +55,8 @@ public:
 		}
 	}
 
-	void toggleDone() {
-		m_isDone ? markAsUndone() : markAsDone();
+	void ToggleDone() {
+		m_isDone ? MarkAsUndone() : MarkAsDone();
 	}
 
 	// Utility methods

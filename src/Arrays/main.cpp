@@ -151,22 +151,22 @@ public:
 int main()
 {
     firstArrayExample();
-    
-    std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" <<  std::endl;
-    
-    secondArrayExample();
-    
+
     std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-    
+
+    secondArrayExample();
+
+    std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+
     thirdExampleArraysOnTheHeap();
 
     std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-   
+
     MemoryFragmentation mf;
 
 
     std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-    
+
     std::array<int, 100> array;
 
     for (int i = 0; i < array.size(); i++) {
@@ -181,7 +181,7 @@ int main()
     std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
 
     MultiDimensioalArrays();
-
+}
  
 
 

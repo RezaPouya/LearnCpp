@@ -2,85 +2,214 @@
 #include "TaskManager.h"
 
 TaskManager& TaskManager::GetInstance() {
-    static TaskManager instance;
-    return instance;
+	static TaskManager instance;
+	return instance;
 }
 
 int TaskManager::GetLastId() const {
-    if (m_Tasks.empty()) {
-        return 0; // Return 0 if no tasks exist
-    }
+	if (m_Tasks.empty()) {
+		return 0; // Return 0 if no tasks exist
+	}
 
-    // Find the maximum ID in the vector
-    auto it = std::max_element(m_Tasks.begin(), m_Tasks.end(),
-        [](const Task& a, const Task& b) {
-            return a.GetId() < b.GetId();
-        });
+	// Find the maximum ID in the vector
+	auto it = std::max_element(m_Tasks.begin(), m_Tasks.end(),
+		[](const Task& a, const Task& b) {
+			return a.GetId() < b.GetId();
+		});
 
-    return it->GetId();
+	return it->GetId();
 }
 
 int TaskManager::GetNextAvailableId() const {
-    return GetLastId() + 1;
+	return GetLastId() + 1;
 }
 
 const std::optional<std::unique_ptr<TaskOutputDto>> TaskManager::GetById(int id) const {
 
-    auto task = std::find_if(m_Tasks.begin(), m_Tasks.end(),
-        [id](const Task& task) {
-            return  task.GetId() == id;
-        });
+	auto task = std::find_if(m_Tasks.begin(), m_Tasks.end(),
+		[id](const Task& task) {
+			return task.GetId() == id;
+		});
 
-    if (task == m_Tasks.end()) {
-        return std::nullopt;
-    }
+	if (task == m_Tasks.end()) {
+		return std::nullopt;
+	}
 
-    return std::make_unique<TaskOutputDto>(task);
+	return std::make_unique<TaskOutputDto>(task);
 }
 
-const std::vector<TaskOutputDto>& TaskManager::GetList(OrderBy orderBy, 
-    OrderByDirection orderByDirection) const {
-    
-    std::vector<TaskOutputDto> result;
+const std::vector<TaskOutputDto> TaskManager::GetList(OrderBy orderBy,
+	OrderByDirection orderByDirection) const {
 
-    // Since we're returning a reference to the internal vector, we can't sort it in place.
-    // In a real implementation, you might want to return a sorted copy or use a different approach.
-    // For now, we'll return the unsorted vector.
+	std::vector<TaskOutputDto> result;
 
-    // TODO: Implement proper sorting logic if needed
-    // This would require creating a sorted copy or maintaining a sorted container
+	for (auto& t : m_Tasks) {
+		result.push_back(TaskOutputDto(t));
+	}
 
-    return result;
+	std::sort(result.begin(), result.end(), [orderBy, orderByDirection](const TaskOutputDto& a,
+		const TaskOutputDto& b) {
+			switch (orderBy) {
+			case OrderBy::Id: {
+				return IsAscending(orderByDirection) ? a.Id < b.Id : a.Id > b.Id;
+			}; //OrderBy::Id
+			case OrderBy::Create: {
+				return IsAscending(orderByDirection) ?
+					a.CreatedAt < b.CreatedAt :
+					a.CreatedAt > b.CreatedAt;
+			}; //OrderBy::Create
+			case OrderBy::Completed: {
+				return IsAscending(orderByDirection) ?
+					a.DoneAt.value() < b.DoneAt.value() :
+					a.DoneAt.value() > b.DoneAt.value();
+			}; //OrderBy::Id:
+			default:  return a.Id < b.Id;
+			}
+		});
+
+	return result;
 }
 
 std::optional<Task> TaskManager::FindById(int id) {
-    auto it = std::find_if(m_Tasks.begin(), m_Tasks.end(),
-        [id](const Task& task) {
-            return task.GetId() == id;
-        });
+	auto it = std::find_if(m_Tasks.begin(), m_Tasks.end(),
+		[id](const Task& task) {
+			return task.GetId() == id;
+		});
 
-    if (it != m_Tasks.end()) {
-        return *it;
-    }
+	if (it != m_Tasks.end()) {
+		return *it; // return task
+	}
 
-    return std::optional<Task>();
+	return std::optional<Task>(); // retur empt
 }
 
-void TaskManager::Add(
-    const std::string& title,
-    const std::optional<std::string>& content,
-    TaskCategory category) {
+const Task* TaskManager::FindById(int id) const {
 
-    int id = GetNextAvailableId();
+	auto it = std::find_if(m_Tasks.begin(), m_Tasks.end(),
+		[id](const Task& task) {
+			return task.GetId() == id;
+		});
 
-    // Create task with content if provided, otherwise use empty string
-    std::string taskContent = content.has_value() ? content.value() : "";
+	return (it != m_Tasks.end()) ? &(*it) : nullptr;
+}
 
-    // Create the task (assuming Task constructor takes id, title, content)
-    Task newTask(id, title, taskContent);
+void TaskManager::Add(const std::string& title,
+	const std::optional<std::string>& content,
+	TaskCategory category) {
 
-    // Set category if your Task class has this method
-    // newTask.setCategory(static_cast<NoteCategory>(category));
+	int id = GetNextAvailableId();
 
-    m_Tasks.emplace_back(std::move(newTask));
+	// Create task with content if provided, otherwise use empty string
+	std::string taskContent = content.has_value() ? content.value() : "";
+
+	// Create the task (assuming Task constructor takes id, title, content)
+	Task newTask(id, title, taskContent, category);
+
+	m_Tasks.emplace_back(std::move(newTask));
+}
+
+
+std::optional<TaskOutputDto> TaskManager::Edit(int id,
+	const std::string& title,
+	const std::optional<std::string>& content = std::nullopt,
+	TaskCategory category = TaskCategory::Personal)
+{
+	auto task = FindById(id);
+
+	if (!task.has_value()) {
+		return std::nullopt; // Task not found
+	}
+
+	// Update the task
+	task->SetTitle(title);
+
+	if (content.has_value()) {
+		task->SetContent(content.value());
+	}
+
+	task->SetCategory(category);
+
+	// Return the updated task as DTO
+	return TaskOutputDto(*task);
+}
+
+void TaskManager::RemoveById(int id) {
+	//auto it = std::remove_if(m_Tasks.begin(), m_Tasks.end(),
+	//	[id](const Task& task) {
+	//		return task.GetId() == id;
+	//	});
+
+	//m_Tasks.erase(it, m_Tasks.end());
+
+	std::erase_if(m_Tasks, [id](const Task& task) {
+		return task.GetId() == id;
+		});
+}
+
+void TaskManager::ToggleById(int id) {
+	
+	auto task = FindById(id);
+
+	if (task.has_value()) {
+		task->ToggleDone();
+	}
+}
+
+size_t TaskManager::GetTaskCount() const {
+	return m_Tasks.size();
+}
+
+size_t TaskManager::GetCompletedCount() const {
+
+	return std::count_if(m_Tasks.begin(), m_Tasks.end(),
+		[](const Task& task) {
+			return task.GetIsDone();
+		});
+}
+
+size_t TaskManager::GetPendingCount() const {
+	return std::count_if(m_Tasks.begin(), m_Tasks.end(),
+		[](const Task& task) {
+			return !task.GetIsDone();
+		});
+}
+
+std::vector<TaskOutputDto> TaskManager::GetCompletedTasks() const {
+	std::vector<TaskOutputDto> completedTasks;
+
+	for (const auto& task : m_Tasks) {
+		if (task.GetIsDone()) {
+			// Create TaskOutputDto and store pointers (requires storing DTOs)
+			completedTasks.push_back(TaskOutputDto(task));
+		}
+	}
+
+	return completedTasks;
+}
+
+std::vector<TaskOutputDto> TaskManager::GetPendingTasks() const {
+	std::vector<TaskOutputDto> pendingTasks;
+
+	for (const auto& task : m_Tasks) {
+		if (!task.GetIsDone()) {
+			pendingTasks.push_back(TaskOutputDto(task));
+		}
+	}
+
+	return pendingTasks;
+}
+
+bool TaskManager::TaskExists(int id) const {
+	return std::any_of(m_Tasks.begin(), m_Tasks.end(),
+		[id](const Task& task) {
+			return task.GetId() == id;
+		});
+}
+
+void TaskManager::ClearAllTasks() {
+	m_Tasks.clear();
+}
+
+bool IsAscending(const OrderByDirection& orderByDirection) {
+	return orderByDirection == OrderByDirection::Ascending;
 }

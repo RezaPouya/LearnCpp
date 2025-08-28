@@ -4,9 +4,11 @@
 
 class TaskManager {
 private:
-    std::vector<Task> m_Tasks;
+    std::vector<Task> m_Tasks ;
 
-    TaskManager() = default; // Private constructor for singleton pattern
+    TaskManager() {
+        m_Tasks.reserve(5);
+    } //= default; // Private constructor for singleton pattern
 
     // Delete copy constructor and assignment operator
     TaskManager(const TaskManager&) = delete;
@@ -21,7 +23,7 @@ public:
     static TaskManager& GetInstance();
 
     // Task management methods
-    const std::vector<TaskOutputDto>& GetList(OrderBy orderBy = OrderBy::Create,
+    const std::vector<TaskOutputDto> GetList(OrderBy orderBy = OrderBy::Create,
         OrderByDirection orderByDirection = OrderByDirection::Descending) const;
 
     const std::optional<std::unique_ptr<TaskOutputDto>> GetById(int id) const;
@@ -30,7 +32,7 @@ public:
         const std::optional<std::string>& content = std::nullopt,
         TaskCategory category = TaskCategory::Personal);
 
-    void Edit(int id,
+    std::optional<TaskOutputDto> Edit(int id,
         const std::string& title,
         const std::optional<std::string>& content = std::nullopt,
         TaskCategory category = TaskCategory::Personal);
@@ -46,8 +48,8 @@ public:
     int GetNextAvailableId() const;
 
     // Additional useful methods
-    std::vector<const Task*> GetCompletedTasks() const;
-    std::vector<const Task*> GetPendingTasks() const;
+    std::vector<TaskOutputDto> GetCompletedTasks() const;
+    std::vector<TaskOutputDto> GetPendingTasks() const;
     bool TaskExists(int id) const;
 
     // For testing/debugging
