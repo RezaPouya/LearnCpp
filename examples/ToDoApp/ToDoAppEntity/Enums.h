@@ -6,7 +6,6 @@ enum struct TaskCategory : char {
 	Learning = 2,
 };
 
-
 enum struct OrderBy : char {
     Id,
     Create,

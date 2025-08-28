@@ -1,6 +1,12 @@
 #include "CommandManager.h"
+#include <iostream>
+#include <limits>
+#include "TaskManager.h"
+#include "../../ToDoAppEntity/TimeHelper.h"
 
-CommandManager::CommandManager() : m_isRunning(true), m_currentCommand(MenuCommand::Home) {
+CommandManager::CommandManager() :m_TaskManager(TaskManager::GetInstance()),
+m_isRunning(true), m_currentCommand(MenuCommand::Home) {
+
     initializeCommands();
 }
 
@@ -21,8 +27,8 @@ void CommandManager::initializeCommands() {
     // Default command handlers (can be overridden)
     m_commandHandlers = {
         {MenuCommand::Exit, [this]() { m_isRunning = false; }},
-        {MenuCommand::Home, [this]() { showMainMenu(); }},
-        {MenuCommand::List, []() { std::cout << "Listing all tasks...\n"; }},
+        {MenuCommand::Home, [this]() { ShowMainMenu(); }},
+        {MenuCommand::List, [this]() { ShowList(); }},
         {MenuCommand::Add, []() { std::cout << "Adding new task...\n"; }},
         {MenuCommand::Delete, []() { std::cout << "Deleting task...\n"; }},
         {MenuCommand::Edit, []() { std::cout << "Editing task...\n"; }},
@@ -42,19 +48,6 @@ void CommandManager::printWelcome() const {
     std::cout << "===========================================================\n\n";
 }
 
-void CommandManager::showMainMenu() const {
-    std::cout << "\n=== MAIN MENU ===\n";
-    std::cout << "Available commands:\n";
-
-    for (const auto& [command, description] : m_commandDescriptions) {
-        if (command != MenuCommand::Exit && command != MenuCommand::Home) {
-            std::cout << static_cast<int>(command) << ". " << description << "\n";
-        }
-    }
-    std::cout << static_cast<int>(MenuCommand::Exit) << ". "
-        << m_commandDescriptions.at(MenuCommand::Exit) << "\n";
-    std::cout << "===========================================================\n";
-}
 
 MenuCommand CommandManager::getCommandFromInput() const {
     int input;
@@ -62,7 +55,7 @@ MenuCommand CommandManager::getCommandFromInput() const {
 
     if (!(std::cin >> input)) {
         std::cin.clear();
-        std::cin.ignore(10000, '\n');
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return MenuCommand::Invalid;
     }
 
@@ -99,7 +92,7 @@ void CommandManager::handleInvalidCommand() const {
 
 void CommandManager::run() {
     printWelcome();
-    showMainMenu();
+    ShowMainMenu();
 
     while (m_isRunning) {
         MenuCommand command = getCommandFromInput();
@@ -116,7 +109,7 @@ void CommandManager::run() {
             std::cout << "\nPress Enter to continue...";
             std::cin.ignore();
             std::cin.get();
-            showMainMenu();
+            ShowMainMenu();
         }
     }
 
@@ -146,3 +139,40 @@ std::string CommandManager::getCommandName(MenuCommand command) const {
     default: return "Unknown";
     }
 }
+
+//----------------------------------------------------------------------------------
+
+void CommandManager::ShowMainMenu() const {
+    std::cout << "\n=== MAIN MENU ===\n";
+    std::cout << "Available commands:\n";
+
+    for (const auto& [command, description] : m_commandDescriptions) {
+        if (command != MenuCommand::Exit && command != MenuCommand::Home) {
+            std::cout << static_cast<int>(command) << ". " << description << "\n";
+        }
+    }
+    std::cout << static_cast<int>(MenuCommand::Exit) << ". "
+        << m_commandDescriptions.at(MenuCommand::Exit) << "\n";
+    std::cout << "===========================================================\n";
+}
+
+void CommandManager::ShowList() const {
+    size_t taskCount = m_TaskManager.GetTaskCount();
+
+    if (taskCount == 0) {
+        std::cout << "You don't have any tasks defined!" << std::endl;
+    }
+    else {
+        std::cout << "Your Tasks (" << taskCount << "):" << std::endl;
+        std::cout << "...................................................." << std::endl;
+
+        for (const auto& task : m_TaskManager.GetList()) {
+            std::cout << task.Id << " - "
+                << MyUtilities::TimeHelper::FormatTimePoint(task.CreatedAt) << " - "
+                << task.Title << " - state: " << task.Status << std::endl;
+        }
+    }
+
+    ShowMainMenu();
+}
+ 

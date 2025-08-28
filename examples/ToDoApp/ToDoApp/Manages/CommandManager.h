@@ -1,10 +1,6 @@
 #pragma once
-#include <vector>
-#include <string>
-#include <iostream>
-#include <functional>
-#include <map>
-#include <memory>
+#include "../pch.h"
+#include "TaskManager.h"
 
 enum class MenuCommand {
     Exit = -1,
@@ -21,34 +17,29 @@ enum class MenuCommand {
 
 class CommandManager {
 private:
-    std::map<MenuCommand, std::string> m_commandDescriptions;
-    std::map<MenuCommand, std::function<void()>> m_commandHandlers;
-    bool m_isRunning;
-    MenuCommand m_currentCommand;
-
-    void initializeCommands();
-
+    const TaskManager& m_TaskManager;
 public:
+    
     CommandManager();
 
-    // Command registration
     void registerCommandHandler(MenuCommand command, std::function<void()> handler);
-
-    // UI methods
     void printWelcome() const;
-    void showMainMenu() const;
-    void handleInvalidCommand() const;
-
-    // Command processing
     MenuCommand getCommandFromInput() const;
     void executeCommand(MenuCommand command);
-
-    // Main loop
+    void handleInvalidCommand() const;
     void run();
-
-    // Getters
     bool isRunning() const;
     MenuCommand getCurrentCommand() const;
     std::string getCommandName(MenuCommand command) const;
-};
 
+    void ShowMainMenu() const;
+    void ShowList() const;
+
+private:
+    void initializeCommands();
+
+    bool m_isRunning;
+    MenuCommand m_currentCommand;
+    std::unordered_map<MenuCommand, std::string> m_commandDescriptions;
+    std::unordered_map<MenuCommand, std::function<void()>> m_commandHandlers;
+};

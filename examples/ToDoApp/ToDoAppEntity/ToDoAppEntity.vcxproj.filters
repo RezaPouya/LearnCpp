@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="entities\headers\Task.h" />
-    <ClInclude Include="Utilities\TimeHelper.h" />
-    <ClInclude Include="entities\headers\Enums.h" />
+    <ClInclude Include="Task.h" />
+    <ClInclude Include="TimeHelper.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="entities\Task.cpp" />
-    <ClCompile Include="Utilities\EnumHelpers.h" />
-    <ClCompile Include="Dtos\TaskOutputDto.h" />
+    <ClCompile Include="EnumHelpers.h" />
+    <ClCompile Include="TaskOutputDto.h" />
   </ItemGroup>
 </Project>

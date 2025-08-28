@@ -1,5 +1,5 @@
 #pragma once
-#include "../pch.h"
+#include "pch.h"
 
 namespace MyUtilities {
     class TimeHelper {
@@ -21,12 +21,7 @@ namespace MyUtilities {
             return std::format(fmt, std::forward<Args>(args)...);
         }
 
-        // TimePoint formatter - simplified
-        static std::string FormatTimePoint(const std::chrono::system_clock::time_point& tp) {
-            std::scoped_lock lock(timeMutex);
-            return std::format("{:%Y-%m-%d %H:%M:%S}", tp);
-        }
-
+ 
         // Precision formatting with proper compile-time format
         static std::string FormatWithPrecision(const std::chrono::system_clock::time_point& tp) {
             std::scoped_lock lock(timeMutex);
@@ -60,6 +55,23 @@ namespace MyUtilities {
             std::scoped_lock lock(timeMutex);
             auto now = std::chrono::system_clock::now();
             return std::vformat(fmt, std::make_format_args(now));
+        }
+
+        static std::string FormatTimePoint(const std::chrono::system_clock::time_point& timePoint,
+            const char* format = "%Y-%m-%d %H:%M") {
+            std::scoped_lock lock(timeMutex);
+            std::time_t time = std::chrono::system_clock::to_time_t(timePoint);
+            std::tm localTime;
+
+#ifdef _WIN32
+            localtime_s(&localTime, &time);
+#else
+            localtime_r(&time, &localTime);  // POSIX version
+#endif
+
+            char buffer[30];
+            std::strftime(buffer, sizeof(buffer), format, &localTime);
+            return buffer;
         }
     };
 }

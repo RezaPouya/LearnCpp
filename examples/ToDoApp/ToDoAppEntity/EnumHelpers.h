@@ -1,5 +1,5 @@
-#include "../pch.h"
-#include "../entities/headers/Enums.h"
+#include "pch.h"
+#include "Enums.h"
 
 struct EnumHelper {
 	static std::string GetCategoryString(const TaskCategory& category ) {

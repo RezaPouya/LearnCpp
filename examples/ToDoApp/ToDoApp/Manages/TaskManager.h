@@ -1,6 +1,8 @@
+#pragma once  // Add this at the top
 #include "../pch.h"
-#include "../../ToDoAppEntity/entities/headers/Task.h"
-#include "../../ToDoAppEntity/entities/headers/Enums.h"
+#include "../../ToDoAppEntity/Task.h"
+#include "../../ToDoAppEntity/TaskOutputDto.h"
+#include "../../ToDoAppEntity/Enums.h"
 
 class TaskManager {
 private:
@@ -26,7 +28,7 @@ public:
     const std::vector<TaskOutputDto> GetList(OrderBy orderBy = OrderBy::Create,
         OrderByDirection orderByDirection = OrderByDirection::Descending) const;
 
-    const std::optional<std::unique_ptr<TaskOutputDto>> GetById(int id) const;
+    const std::optional<TaskOutputDto> GetById(int id) const;
 
     void Add(const std::string& title,
         const std::optional<std::string>& content = std::nullopt,

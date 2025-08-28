@@ -1,6 +1,10 @@
 #include "../pch.h"
 #include "TaskManager.h"
 
+static bool IsAscending(const OrderByDirection& orderByDirection) {
+	return orderByDirection == OrderByDirection::Ascending;
+}
+
 TaskManager& TaskManager::GetInstance() {
 	static TaskManager instance;
 	return instance;
@@ -24,7 +28,7 @@ int TaskManager::GetNextAvailableId() const {
 	return GetLastId() + 1;
 }
 
-const std::optional<std::unique_ptr<TaskOutputDto>> TaskManager::GetById(int id) const {
+const std::optional<TaskOutputDto> TaskManager::GetById(int id) const {
 
 	auto task = std::find_if(m_Tasks.begin(), m_Tasks.end(),
 		[id](const Task& task) {
@@ -35,7 +39,7 @@ const std::optional<std::unique_ptr<TaskOutputDto>> TaskManager::GetById(int id)
 		return std::nullopt;
 	}
 
-	return std::make_unique<TaskOutputDto>(task);
+	return TaskOutputDto(*task);
 }
 
 const std::vector<TaskOutputDto> TaskManager::GetList(OrderBy orderBy,
@@ -111,8 +115,8 @@ void TaskManager::Add(const std::string& title,
 
 std::optional<TaskOutputDto> TaskManager::Edit(int id,
 	const std::string& title,
-	const std::optional<std::string>& content = std::nullopt,
-	TaskCategory category = TaskCategory::Personal)
+	const std::optional<std::string>& content,
+	TaskCategory category )
 {
 	auto task = FindById(id);
 
@@ -163,14 +167,14 @@ size_t TaskManager::GetCompletedCount() const {
 
 	return std::count_if(m_Tasks.begin(), m_Tasks.end(),
 		[](const Task& task) {
-			return task.GetIsDone();
+			return task.IsDone();
 		});
 }
 
 size_t TaskManager::GetPendingCount() const {
 	return std::count_if(m_Tasks.begin(), m_Tasks.end(),
 		[](const Task& task) {
-			return !task.GetIsDone();
+			return !task.IsDone();
 		});
 }
 
@@ -178,7 +182,7 @@ std::vector<TaskOutputDto> TaskManager::GetCompletedTasks() const {
 	std::vector<TaskOutputDto> completedTasks;
 
 	for (const auto& task : m_Tasks) {
-		if (task.GetIsDone()) {
+		if (task.IsDone()) {
 			// Create TaskOutputDto and store pointers (requires storing DTOs)
 			completedTasks.push_back(TaskOutputDto(task));
 		}
@@ -191,7 +195,7 @@ std::vector<TaskOutputDto> TaskManager::GetPendingTasks() const {
 	std::vector<TaskOutputDto> pendingTasks;
 
 	for (const auto& task : m_Tasks) {
-		if (!task.GetIsDone()) {
+		if (!task.IsDone()) {
 			pendingTasks.push_back(TaskOutputDto(task));
 		}
 	}
@@ -210,6 +214,4 @@ void TaskManager::ClearAllTasks() {
 	m_Tasks.clear();
 }
 
-bool IsAscending(const OrderByDirection& orderByDirection) {
-	return orderByDirection == OrderByDirection::Ascending;
-}
+
