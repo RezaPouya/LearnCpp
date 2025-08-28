@@ -6,6 +6,8 @@
 #include <array>     // Added for std::array
 #include <algorithm>
 #include <vector>
+#include <thread>
+#include <literals>
 
 class Timer {
 private:
@@ -32,10 +34,13 @@ public:
 
 void FirstExample() {
     
+    using namespace std::literals::chrono_literals;
+
     int value = 0;
     {
         Timer timer;
         for (int i = 1; i <= 10000000; i++) {
+            std::this_thread::sleep_for(1s);
             value += 2;
         }
     }
