@@ -182,68 +182,6 @@ int main()
 
     MultiDimensioalArrays();
 
-    std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-    std::cout << std::endl << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-    std::cout << std::endl << "Sorting" << std::endl;
-
-
-    std::vector<int> arrayList = {3,5,7,98,9,945,1,1324};
-    for (auto i : arrayList) {
-        std::cout << i << ", ";
-    }
-
-    std::cout << std::endl << "default sorting" << std::endl;
-
-    std::sort(arrayList.begin(), arrayList.end());
-
-    for (auto i : arrayList) {
-        std::cout << i << ", ";
-    }
-
-
-    std::cout << std::endl << "greater than than sorting" << std::endl;
-
-    std::sort(arrayList.begin(), arrayList.end(), std::greater<int>());
-
-    for (auto i : arrayList) {
-        std::cout << i << ", ";
-    }
-
-
-
-   
-
-
-    std::cout << std::endl << "lesser than than sorting" << std::endl;
-
-    std::sort(arrayList.begin(), arrayList.end(), [](int a, int b) {
-        return (a < b) ? true : false;
-        
-        });
-
-    for (auto i : arrayList) {
-        std::cout << i << ", ";
-    }
-
-
-    std::cout << std::endl << "send a to end of list " << std::endl;
-
-    std::sort(arrayList.begin(), arrayList.end(), [](int a, int b) 
-        {
-            if (a == 3)
-                return false;
-
-            if (b == 3)
-                return true;
-
-            return a < b;
-        });
-
-    for (auto i : arrayList) {
-        std::cout << i << ", ";
-    }
-
-    std::cin.get();
-}
+ 
 
 
