@@ -14,4 +14,5 @@
 #include <stdexcept>
 #include <array>
 #include <unordered_map>
+#include <limits>
 #include <iomanip>  // For std::put_time if not using format

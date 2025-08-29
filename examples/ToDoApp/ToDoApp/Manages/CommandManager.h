@@ -9,15 +9,13 @@ enum class MenuCommand {
     Add = 2,
     Delete = 3,
     Edit = 4,
-    MarkDone = 5,
-    ShowCompleted = 6,
-    ShowPending = 7,
+    ToggleStatus = 5,
     Invalid = 99
 };
 
 class CommandManager {
 private:
-    const TaskManager& m_TaskManager;
+    TaskManager& m_TaskManager;
 public:
     
     CommandManager();
@@ -34,6 +32,10 @@ public:
 
     void ShowMainMenu() const;
     void ShowList() const;
+    void CreateTask();
+    void DeleteTask();
+    void EditTask();
+    void ToggleStatus();
 
 private:
     void initializeCommands();

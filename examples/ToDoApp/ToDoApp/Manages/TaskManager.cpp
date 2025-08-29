@@ -42,6 +42,20 @@ const std::optional<TaskOutputDto> TaskManager::GetById(int id) const {
 	return TaskOutputDto(*task);
 }
 
+const std::optional<Task> TaskManager::FindTaskById(int id) const {
+
+	auto task = std::find_if(m_Tasks.begin(), m_Tasks.end(),
+		[id](const Task& task) {
+			return task.GetId() == id;
+		});
+
+	if (task == m_Tasks.end()) {
+		return std::nullopt;
+	}
+
+	return *task;
+}
+
 const std::vector<TaskOutputDto> TaskManager::GetList(OrderBy orderBy,
 	OrderByDirection orderByDirection) const {
 
@@ -74,30 +88,30 @@ const std::vector<TaskOutputDto> TaskManager::GetList(OrderBy orderBy,
 	return result;
 }
 
-std::optional<Task> TaskManager::FindById(int id) {
+Task* TaskManager::FindById(int id) {
 	auto it = std::find_if(m_Tasks.begin(), m_Tasks.end(),
 		[id](const Task& task) {
 			return task.GetId() == id;
 		});
 
 	if (it != m_Tasks.end()) {
-		return *it; // return task
+		return  &(*it); // return task
 	}
 
-	return std::optional<Task>(); // retur empt
+	return nullptr;
 }
 
-const Task* TaskManager::FindById(int id) const {
+//Task* TaskManager::FindById(int id) {
+//
+//	auto it = std::find_if(m_Tasks.begin(), m_Tasks.end(),
+//		[id](const Task& task) {
+//			return task.GetId() == id;
+//		});
+//
+//	return (it != m_Tasks.end()) ? &(*it) : nullptr;
+//}
 
-	auto it = std::find_if(m_Tasks.begin(), m_Tasks.end(),
-		[id](const Task& task) {
-			return task.GetId() == id;
-		});
-
-	return (it != m_Tasks.end()) ? &(*it) : nullptr;
-}
-
-void TaskManager::Add(const std::string& title,
+std::optional<Task*> TaskManager::Add(const std::string& title,
 	const std::optional<std::string>& content,
 	TaskCategory category) {
 
@@ -109,8 +123,26 @@ void TaskManager::Add(const std::string& title,
 	// Create the task (assuming Task constructor takes id, title, content)
 	Task newTask(id, title, taskContent, category);
 
-	m_Tasks.emplace_back(std::move(newTask));
+	try {
+		// Generate a new ID
+		int newId = m_Tasks.empty() ? 1 : m_Tasks.back().GetId() + 1;
+
+		// Create the task with proper content handling
+		std::string taskContent = content.has_value() ? content.value() : "";
+
+		// Create and add the new task directly in the vector
+		m_Tasks.emplace_back(newId, title, taskContent, category);
+
+		// Return pointer to the last element (the newly added task)
+		return &m_Tasks.back();
+	}
+	catch (const std::exception& e) {
+		std::cerr << "Error adding task: " << e.what() << std::endl;
+		return std::nullopt;
+	}
 }
+
+
 
 
 std::optional<TaskOutputDto> TaskManager::Edit(int id,
@@ -120,7 +152,7 @@ std::optional<TaskOutputDto> TaskManager::Edit(int id,
 {
 	auto task = FindById(id);
 
-	if (!task.has_value()) {
+	if (!task) {
 		return std::nullopt; // Task not found
 	}
 
@@ -137,24 +169,30 @@ std::optional<TaskOutputDto> TaskManager::Edit(int id,
 	return TaskOutputDto(*task);
 }
 
-void TaskManager::RemoveById(int id) {
+bool TaskManager::RemoveById(int id) {
 	//auto it = std::remove_if(m_Tasks.begin(), m_Tasks.end(),
 	//	[id](const Task& task) {
 	//		return task.GetId() == id;
 	//	});
 
 	//m_Tasks.erase(it, m_Tasks.end());
+	{
+		auto task = FindById(id);
 
-	std::erase_if(m_Tasks, [id](const Task& task) {
-		return task.GetId() == id;
-		});
+		if (!task)
+			return false;
+	}
+	
+	std::erase_if(m_Tasks, [id](const Task& task) {return task.GetId() == id;});
+
+	return true;
 }
 
 void TaskManager::ToggleById(int id) {
 	
 	auto task = FindById(id);
 
-	if (task.has_value()) {
+	if (task) {
 		task->ToggleDone();
 	}
 }

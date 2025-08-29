@@ -19,6 +19,22 @@ private:
     bool m_isDone = false;
     std::optional<TimePoint> m_doneAt;
 
+    void MarkAsDone() {
+        if (!m_isDone) {
+            m_isDone = true;
+            m_doneAt = Clock::now();
+            UpdateLastUpdated();
+        }
+    }
+
+    void MarkAsUndone() {
+        if (m_isDone) {
+            m_isDone = false;
+            m_doneAt = std::nullopt;
+            UpdateLastUpdated();
+        }
+    }
+
 public:
     // Constructor implementation
     Task(int id, const std::string& title, const std::string& content, TaskCategory category)
@@ -42,21 +58,7 @@ public:
         UpdateLastUpdated();
     }
 
-    void MarkAsDone() {
-        if (!m_isDone) {
-            m_isDone = true;
-            m_doneAt = Clock::now();
-            UpdateLastUpdated();
-        }
-    }
 
-    void MarkAsUndone() {
-        if (m_isDone) {
-            m_isDone = false;
-            m_doneAt = std::nullopt;
-            UpdateLastUpdated();
-        }
-    }
 
     void ToggleDone() {
         m_isDone ? MarkAsUndone() : MarkAsDone();

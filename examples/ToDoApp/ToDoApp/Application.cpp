@@ -9,11 +9,11 @@
 int main() {
     CommandManager app;
 
-    // You can override default handlers:
-    app.registerCommandHandler(MenuCommand::Add, []() {
-        std::cout << "Custom add handler called!\n";
-        // Implement actual add logic here
-    });
+    //// You can override default handlers:
+    //app.registerCommandHandler(MenuCommand::Add, []() {
+    //    std::cout << "Custom add handler called!\n";
+    //    // Implement actual add logic here
+    //});
 
     app.run();
     return 0;

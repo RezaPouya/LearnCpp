@@ -14,11 +14,10 @@ private:
 
     // Delete copy constructor and assignment operator
     TaskManager(const TaskManager&) = delete;
+
     TaskManager& operator=(const TaskManager&) = delete;
 
-    std::optional<Task> FindById(int id);
-
-    const Task* FindById(int id) const;
+    Task* FindById(int id);
 
 public:
     // Singleton access method
@@ -29,8 +28,9 @@ public:
         OrderByDirection orderByDirection = OrderByDirection::Descending) const;
 
     const std::optional<TaskOutputDto> GetById(int id) const;
+    const std::optional<Task> FindTaskById(int id) const;
 
-    void Add(const std::string& title,
+    std::optional<Task*> Add(const std::string& title,
         const std::optional<std::string>& content = std::nullopt,
         TaskCategory category = TaskCategory::Personal);
 
@@ -39,7 +39,7 @@ public:
         const std::optional<std::string>& content = std::nullopt,
         TaskCategory category = TaskCategory::Personal);
 
-    void RemoveById(int id);
+    bool RemoveById(int id);
     void ToggleById(int id);
 
     // Utility methods
