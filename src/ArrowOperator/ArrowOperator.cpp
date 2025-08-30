@@ -2,8 +2,6 @@
 #include <string>
 #include <format>
 
-
-
 class Entity {
 private:
     std::string m_name;
